@@ -50,7 +50,28 @@ const Home = () => {
       setOperator(value);
       setPreviousInput(currentInput);
       setCurrentInput("0");
-    } else if (["sin", "cos", "tan", "log", "ln", "√", "sinh", "cosh", "tanh", "Rad", "π", "e", "x!", "10ˣ", "x²", "x³", "1/x", "e³"].includes(value)) {
+    } else if (
+      [
+        "sin",
+        "cos",
+        "tan",
+        "log",
+        "ln",
+        "√",
+        "sinh",
+        "cosh",
+        "tanh",
+        "Rad",
+        "π",
+        "e",
+        "x!",
+        "10ˣ",
+        "x²",
+        "x³",
+        "1/x",
+        "e³",
+      ].includes(value)
+    ) {
       const operations = {
         sin: Math.sin,
         cos: Math.cos,
@@ -64,7 +85,15 @@ const Home = () => {
         Rad: (deg) => deg * (Math.PI / 180),
         π: () => Math.PI,
         e: () => Math.E,
-        "x!": (n) => (n < 0 ? "Error" : n === 0 ? 1 : Array.from({ length: n }, (_, i) => i + 1).reduce((acc, val) => acc * val, 1)),
+        "x!": (n) =>
+          n < 0
+            ? "Error"
+            : n === 0
+            ? 1
+            : Array.from({ length: n }, (_, i) => i + 1).reduce(
+                (acc, val) => acc * val,
+                1
+              ),
         "10ˣ": (x) => Math.pow(10, x),
         "x²": (x) => Math.pow(x, 2),
         "x³": (x) => Math.pow(x, 3),
@@ -72,11 +101,15 @@ const Home = () => {
         "e³": () => Math.pow(Math.E, 3),
       };
 
-      const result = formatResult(operations[value](parseFloat(currentInput))).toString();
+      const result = formatResult(
+        operations[value](parseFloat(currentInput))
+      ).toString();
       logHistory(`${value}(${currentInput})`, result);
       setCurrentInput(result);
     } else if (value === "x⁴") {
-      const result = formatResult(Math.pow(parseFloat(currentInput), 4)).toString();
+      const result = formatResult(
+        Math.pow(parseFloat(currentInput), 4)
+      ).toString();
       logHistory(`${currentInput}⁴`, result);
       setCurrentInput(result);
     } else if (value === "xʸ") {
@@ -85,7 +118,9 @@ const Home = () => {
       setOperator("**"); // Set operator for power
     } else if (operator === "**" && value === "=") {
       if (previousInput) {
-        const result = formatResult(Math.pow(parseFloat(previousInput), parseFloat(currentInput))).toString();
+        const result = formatResult(
+          Math.pow(parseFloat(previousInput), parseFloat(currentInput))
+        ).toString();
         logHistory(`${previousInput}^${currentInput}`, result);
         setCurrentInput(result);
         setPreviousInput("");
@@ -106,7 +141,9 @@ const Home = () => {
         <Icon name="history" size={30} color="#fff" />
       </TouchableOpacity>
       <View className="w-full h-[300px] bg-black justify-end px-3">
-        <Text className="text-white text-7xl mb-10 text-right">{currentInput}</Text>
+        <Text className="text-white text-7xl mb-10 text-right">
+          {currentInput}
+        </Text>
       </View>
       <ScrollView
         horizontal={true}
@@ -139,7 +176,10 @@ const Home = () => {
             ["1", "2", "3", "+"],
             ["0", ".", "="],
           ].map((row, rowIndex) => (
-            <View key={rowIndex} className="w-full h-24 flex-row justify-between px-1">
+            <View
+              key={rowIndex}
+              className="w-full h-24 flex-row justify-between px-1"
+            >
               {row.map((value) => (
                 <TouchableOpacity
                   key={value}
@@ -179,7 +219,7 @@ const Home = () => {
             transform: [
               {
                 translateX: scrollX.interpolate({
-                  inputRange: [-6000, width],
+                  inputRange: [-70000, width],
                   outputRange: [width, 0],
                   extrapolate: "clamp",
                 }),
@@ -194,7 +234,10 @@ const Home = () => {
             ["10ˣ", "e³", "x²", "x³"],
             ["ln", "x⁴", "π", "1/x"],
           ].map((row, rowIndex) => (
-            <View key={rowIndex} className="w-full h-24 flex-row justify-between px-1">
+            <View
+              key={rowIndex}
+              className="w-full h-24 flex-row justify-between px-1"
+            >
               {row.map((value) => (
                 <TouchableOpacity
                   key={value}
