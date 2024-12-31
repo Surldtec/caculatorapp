@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   StatusBar,
@@ -140,7 +139,7 @@ const Home = () => {
       >
         <Icon name="history" size={30} color="#fff" />
       </TouchableOpacity>
-      <View className="w-full h-[300px] bg-black justify-end px-3">
+      <View className="w-full flex-grow bg-black  h-[36%] justify-end px-3">
         <Text className="text-white text-7xl mb-10 text-right">
           {currentInput}
         </Text>
@@ -168,6 +167,7 @@ const Home = () => {
               },
             ],
           }}
+          className="flex-1"
         >
           {[
             ["AC", "xʸ", "%", "/"],

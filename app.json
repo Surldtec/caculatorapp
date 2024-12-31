@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "calapp",
-    "slug": "calapp",
+    "name": "Caculator",
+    "slug": "Caculator",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/callogo.png",
+    "icon": "./assets/callogo-square.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/callogo.png",
+      "image": "./assets/callogo-square.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -16,12 +16,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/callogo.png",
+        "foregroundImage": "./assets/callogo-square.png",
         "backgroundColor": "#000000"
-      }
+      },
+      "package": "com.surldtec.Caculator"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0fa4abb0-0a9e-454b-992b-2bedd90074b6"
+      }
     }
   }
 }
